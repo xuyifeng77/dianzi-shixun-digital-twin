@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """Duo 侧桥接：读 UNO 的 @行协议 → 转发 PC 看板；把鉴权结果回写给 UNO。
    运行：python3 duo_bridge.py       依赖：pyserial
@@ -8,7 +8,7 @@ import serial
 
 PORT   = "/dev/ttyUSB0"                  # Duo 上 ls /dev/ttyUSB* 确认
 BAUD   = 115200
-SERVER = "http://192.168.1.100:8000/ingest"   # PC 看板地址，无则置 None
+SERVER = "http://192.168.5.20:8000/ingest"   # PC 看板（192.168.5.x 网段，按现场 PC 实际 IP 改）；无则置 None
 CARDS  = {"A1B2C3D4"}                    # 授权卡 UID 白名单（大写十六进制）
 
 def send(ser, line):

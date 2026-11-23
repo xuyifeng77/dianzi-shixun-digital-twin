@@ -51,7 +51,7 @@
 /* ---------------- 1. 引脚 ---------------- */
 #define PIN_DHT    2      /* DHT11 数据 */
 #define PIN_DS18   3      /* DS18B20 DQ（4.7kΩ 上拉） */
-#define PIN_BUZZ   4      /* 有源蜂鸣器 */
+#define PIN_BUZZ   4      /* 有源蜂鸣器（强制；无源需方波，tone() 占 Timer2 与 IRremote 冲突） */
 #define PIN_LED    5      /* 7色LED，PWM（Timer0，与 Servo 不冲突） */
 #define PIN_RELAY  6      /* 继电器，低电平吸合 */
 #define PIN_SERVO  7      /* 舵机（Servo 库独占 Timer1） */
@@ -61,7 +61,7 @@
 #define PIN_PHOTO A0      /* U 型光电 DO */
 #define PIN_DOOR  A1      /* 干簧管 DO */
 #define PIN_TOUCH A2      /* 触摸开关 */
-#define PIN_AUX   A3      /* 预留（无源蜂鸣器因 Timer2 冲突未接） */
+#define PIN_AUX   A3      /* 预留（无源蜂鸣器不使用：需方波，tone() 占 Timer2） */
 
 /* ---------------- 2. 地址与阈值 ---------------- */
 #define PCF_ADDR  0x48
