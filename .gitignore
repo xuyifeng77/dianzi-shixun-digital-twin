@@ -1,0 +1,26 @@
+# ===== 系统与编辑器 =====
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.idea/
+*.swp
+~$*
+*.tmp
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# ===== 本工具产生的临时文件 =====
+.dsh-pilot/
+
+# ===== 备份副本（与根目录文档重复，且版本更旧，不入库）=====
+/1/
+
+# ===== 可选：体积较大的第三方资料 =====
+# 默认保留；若想让仓库更轻（约 26MB -> 0.6MB），取消下面两行注释
+# /tools/img/
+# /tools/ref/

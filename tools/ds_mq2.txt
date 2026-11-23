@@ -1,0 +1,187 @@
+### pages=2
+
+===== PAGE 1 =====
+HANWEI ELETRONICS CO.,LTD MQ-2 http://www.hwsensor.com
+TECHNICAL DATA MQ-2 GAS SENSOR
+FEATURES
+Wide detecting scope Fast response and High sensitivity
+Stable and long life Simple drive circuit
+APPLICATION
+They are used in gas leakage detecting equipments in family and industry, are suitable for detecting
+of LPG, i-butane, propane, methane ,alcohol, Hydrogen, smoke.
+SPECIFICATIONS
+A. Standard work condition
+Symbol Parameter name Technical condition Remarks
+Vc Circuit voltage 5V±0.1 AC OR DC
+V Heating voltage 5V±0.1 ACOR DC
+H
+R Load resistance can adjust
+L
+R Heater resistance 33Ω±5% Room Tem
+H
+P Heating consumption less than 800mw
+H
+B. Environment condition
+Symbol Parameter name Technical condition Remarks
+Tao Using Tem -20℃-50℃
+Tas Storage Tem -20℃-70℃
+R Related humidity less than 95%Rh
+H
+O Oxygen concentration 21%(standard condition)Oxygen minimum value is
+2
+concentration can affect sensitivity over 2%
+C. Sensitivity characteristic
+Symbol Parameter name Technical parameter Remarks
+Rs Sensing 3K Ω-30KΩ Detecting concentration
+Resistance (1000ppm iso-butane ) scope：
+200ppm-5000ppm
+α Concentration LPG and propane
+(3000/1000) Slope rate ≤0.6 300ppm-5000ppm
+isobutane butane
+Standard Temp: 20 ℃±2℃ Vc:5V ±0.1 5000ppm-20000ppm
+Detecting Humidity: 65% ±5% Vh: 5V ±0.1 methane
+Condition 300ppm-5000ppm H 2
+100ppm-2000ppm
+Preheat time Over 24 hour
+Alcohol
+D. Structure and configuration, basic measuring circuit
+Parts Materials
+1 Gas sensing SnO2
+layer
+2 Electrode Au
+3 Electrode line Pt
+4 Heater coil Ni-Cr alloy
+5 Tubular ceramic Al2O3
+6 Anti-explosion Stainless steel gauze
+network (SUS316 100-mesh)
+7 Clamp ring Copper plating Ni
+8 Resin base Bakelite
+9 Tube Pin Copper plating Ni
+Fig.2
+Fig. 1
+Configuration A Configuration B
+A向 A向
+Structure and configuration of MQ-2 gas sensor is shown as Fig. 1 (Configuration A or B), sensor composed by
+micro AL2O3 ceramic tube, Tin Dioxide (SnO 2) sensitive layer, measuring electrode and heater are fixed into a
+TEL: 86-371- 67169070 67169080 FAX: 86-371-67169090 E-mail: sales@hwsensor.com
+--- table ---
+Symbol | Parameter name | Technical condition | Remarks
+Vc | Circuit voltage | 5V±0.1 | AC OR DC
+V H | Heating voltage | 5V±0.1 | ACOR DC
+R L | Load resistance | can adjust | 
+R H | Heater resistance | 33Ω±5% | Room Tem
+P H | Heating consumption | less than 800mw | 
+--- table ---
+Symbol | Parameter name | Technical condition | Remarks
+Tao | Using Tem | -20℃-50℃ | 
+Tas | Storage Tem | -20℃-70℃ | 
+R H | Related humidity | less than 95%Rh | 
+O 2 | Oxygen concentration | 21%(standard condition)Oxygen concentration can affect sensitivity | minimum value is over 2%
+--- table ---
+Symbol | Parameter name | Technical parameter | Remarks
+Rs | Sensing Resistance ( | 3K Ω-30KΩ 1000ppm iso-butane ) | Detecting concentration scope： 200ppm-5000ppm LPG and propane 300ppm-5000ppm butane 5000ppm-20000ppm methane 300ppm-5000ppm H 2 100ppm-2000ppm Alcohol
+α (3000/1000) isobutane | Concentration Slope rate | ≤0.6 | 
+Standard Detecting Condition | Temp: 20 ℃±2℃ Vc:5V ±0.1 Humidity: 65% ±5% Vh: 5V ±0.1 |  | 
+Preheat time | Over 24 hour |  | 
+--- table ---
+ |  | Fig.2 Fig. 1 |  | 
+Gas sensing layer Electrode Electrode line Heater coil Tubular ceramic Anti-explosion | SnO2 Au Pt Ni-Cr alloy Al2O3 Stainless steel gauze |  |  | 
+ |  |  |  | 
+ |  |  |  | 
+ |  |  |  | guration B
+
+===== PAGE 2 =====
+HANWEI ELETRONICS CO.,LTD MQ-2 http://www.hwsensor.com
+crust made by plastic and stainless steel net. The heater provides necessary work conditions for work of
+sensitive components. The enveloped MQ-2 have 6 pin ,4 of them are used to fetch signals, and other 2 are used
+for providing heating current.
+Electric parameter measurement circuit is shown as Fig.2
+E. Sensitivity characteristic curve
+MQ-2
+10
+1
+ppm
+0.1
+100 1000 10000
+Fig.2 sensitivity characteristics of the MQ-2
+SENSITVITY ADJUSTMENT
+Resistance value of MQ-2 is difference to various kinds and various concentration gases. So,When using
+this components, sensitivity adjustment is very necessary. we recommend that you calibrate the detector for
+1000ppm liquified petroleum gas<LPG>,or 1000ppm iso-butane<i-C4H10>concentration in air and use value of
+Load resistance that( R ) about 20 KΩ(5KΩ to 47 KΩ).
+L
+When accurately measuring, the proper alarm point for the gas detector should be determined after
+considering the temperature and humidity influence.
+TEL: 86-371- 67169070 67169080 FAX: 86-371-67169090 E-mail: sales@hwsensor.com
+oR/sR
+H2
+LPG
+CH4
+CO
+alcohol
+smoke
+propane
+air
+1.8
+1.6
+1.4
+1.2
+1
+0.8
+0.6
+0.4
+degree
+0.2
+0
+-20 -10 0 10 20 30 40 50 60
+oR/sR
+Fig.3 is shows the typical
+sensitivity characteristics of
+the MQ-2 for several gases.
+in their: Temp: 20℃、
+Humidity: 65%、
+O concentration 21%
+2
+RL=5kΩ
+Ro: sensor resistance at 1000ppm of
+H in the clean air.
+2
+Rs:sensor resistance at various
+concentrations of gases.
+33%RH
+Fig.4 is shows the typical dependence of
+85%RH
+the MQ-2 on temperature and humidity.
+Ro: sensor resistance at 1000ppm of Hin air
+2
+at 33%RH and 20 degree.
+Rs: sensor resistance at 1000ppm of H 2
+Fig.4 at different temperatures and humidities.
+--- table ---
+ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  | H2 |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  | LPG CH4 |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  | CO alco | hol |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  | smok | e |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  | prop air | ane |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+--- table ---
+ | 1.8 1.6 |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  | 33%RH 85%RH
+ | 1.4 |  |  |  |  |  |  |  |  | 
+ | 1.2 |  |  |  |  |  |  |  |  | 
+ | 1 |  |  |  |  |  |  |  |  | 
+ | 0.8 0.6 |  |  |  |  |  |  |  |  | 
+ |  |  |  |  | Fi | g.4 |  |  |  | 
+ | 0.4 |  |  |  |  |  |  |  |  | 
+ | 0.2 |  |  |  |  |  |  |  | deg | 
