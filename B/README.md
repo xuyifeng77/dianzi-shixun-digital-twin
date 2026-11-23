@@ -7,7 +7,7 @@
 
 | # | 交付物 | 文件 | 截止 |
 |---|---|---|---|
-| 1 | 两块板通电、SSH、`camera-test.sh` 出图、固定 IP/hostname/MAC | 节点操作手册（一页） | D2 |
+| 1 | 两块板通电、SSH、`camera-test.sh` 出图、固定 IP/hostname/MAC | 节点操作手册（一页） | D2（**出图 ✅ 11-23**） |
 | 2 | TDL 人脸检测跑通（`scrfd_768_432_int8_1x.cvimodel`，SG200X 版） | 推理脚本，连跑 1 h 不崩 | D3–D4 |
 | 3 | **`duo_bridge.py` v1.2**：端口自动探测 `ttyACM0`/`ttyUSB0`、心跳前置、发送线程化 | [`duo_bridge.py`](duo_bridge.py) | D5 |
 | 4 | α/β 两种架构采集程序（β 传原始流、α 只传结论） | `capture_alpha.py` / `capture_beta.py` | D7–D8 |
@@ -18,6 +18,7 @@
 | 文件 | 用途 | 状态 |
 |---|---|---|
 | [`09-B岗-视觉节点.md`](09-B岗-视觉节点.md) | **我的作业书**：Duo 点亮到推理全流程、v1.2 整份代码、验收清单 | 现行 |
+| [`摄像头出图验证-2026-11-23.md`](摄像头出图验证-2026-11-23.md) | **首个里程碑记录**：出图结论与证据、复现步骤、帧规格回填表、下一步（程序化取帧 → TDL） | 现行（§四 待回填） |
 | [`duo_bridge.py`](duo_bridge.py) | Duo 侧 Python 桥接：ASCII `@` 行帧 → HTTP POST 到 `/ingest` | 现版 v1.1（69 行），待改 v1.2 |
 
 ## 三、节点与地址（契约 5）
