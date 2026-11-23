@@ -10,7 +10,7 @@
 | 1 | 两块板通电、SSH、`camera-test.sh` 出图、固定 IP/hostname/MAC | 节点操作手册（一页） | D2（**出图 ✅ 11-23**） |
 | 2 | TDL 人脸检测跑通（`scrfd_768_432_int8_1x.cvimodel`，SG200X 版） | 推理脚本，连跑 1 h 不崩 | D3–D4 |
 | 3 | **`duo_bridge.py` v1.2**：端口自动探测 `ttyACM0`/`ttyUSB0`、心跳前置、发送线程化 | [`duo_bridge.py`](duo_bridge.py) | D5 |
-| 4 | α/β 两种架构采集程序（β 传原始流、α 只传结论） | `capture_alpha.py` / `capture_beta.py` | D7–D8 |
+| 4 | α/β 两种架构采集程序（α 传原始流、β 只传结论） | `capture_alpha.py` / `capture_beta.py` | D7–D8 |
 | 5 | 与 D 联调 Duo→PC JSON（契约 4） | [`11-D岗-数据与实验.md`](../D/11-D岗-数据与实验.md) §看板 | D5 |
 
 ## 二、本文件夹文件

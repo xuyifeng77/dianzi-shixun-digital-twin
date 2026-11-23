@@ -35,7 +35,7 @@
 
 1. **先只插网线 + 5V 供电**，不插 USB。IOB 底板插上后 **USB-NCM 会失效**，只能走网口。
 2. Duo 默认 `192.168.0.233`（IOB 出厂值，若与现场网段不同，先用串口线 CH340 进 `vi /etc/init.d/S99network` 或 `/etc/network/interfaces` 临时改到 `.5` 段），确认能 ping 到网关。
-3. **改 hostname**：A 板 `milkv-a`、B 板 `milkv-b`（`/etc/hostname` + `/etc/hosts` 两处都要改），否则 `ssh` 分不清谁是谁。
+3. **改 hostname**：A 板 `nodeA`、B 板 `nodeB`（`/etc/hostname` + `/etc/hosts` 两处都要改），否则 `ssh` 分不清谁是谁。**本通知早前写的 `milkv-a` / `milkv-b` 已作废**，全项目唯一写法以 `02-系统设计.md §节点表` 为准。
 4. 把两块板 MAC 抄下来（`ip link show eth0`），交给 A 在路由器里绑 `.7` / `.8`。
 5. 绑完**断电重上电**，`ping 192.168.5.7` + `ssh root@192.168.5.7` 双证，截图存到节点手册。
 6. 板内**不要**再写死静态 IP——写死了换场地就得重刷，答辩现场没时间。
@@ -65,7 +65,7 @@
 
 ```
 网段 192.168.5.0/24  网关 192.168.5.1
-A 板 192.168.5.7（milkv-a）  B 板 192.168.5.8（milkv-b）
+A 板 192.168.5.7（nodeA）  B 板 192.168.5.8（nodeB）
 PC 看板 192.168.5.20:8000（POST /ingest）
 IP 由路由器按 MAC 绑定，板内不写死
 ```
@@ -77,7 +77,7 @@ IP 由路由器按 MAC 绑定，板内不写死
 ## 七、验收
 
 - [ ] `ping 192.168.5.7` 与 `ssh root@192.168.5.7` 双通，截图入手册
-- [ ] 两块板 hostname 是 `milkv-a` / `milkv-b`（不是默认的 `milkv`）
+- [ ] 两块板 hostname 是 `nodeA` / `nodeB`（不是默认的 `milkv`，也不是旧写法 `milkv-a/b`）
 - [ ] MAC 已交 A 绑定，断电重上电后 IP 不变
 - [ ] `duo_bridge.py` 的 `SERVER` 仍指向 `192.168.5.20:8000/ingest`，且可被环境变量覆盖
 - [ ] 上报 JSON 里没有 `freq_hz`，报警只有 `level` + `ts`
