@@ -1,0 +1,400 @@
+[beta] 启动本地推理：camera-test.sh
+[beta] 上报地址：http://192.168.5.5:8000/ingest   周期 2.0s   meta_only=True
+[beta] 注意：不要开 VLC 拉流，否则视频出板，就不是 β 了
+[beta] 输出通道 = pty
+[cam] [SAMPLE_COMM_SNS_ParseIni]-2219: Parse /mnt/data/sensor_cfg.ini
+[cam] [parse_source_devnum]-1812: devNum =  1
+[cam] [parse_sensor_name]-1893: sensor =  GCORE_GC2083_MIPI_2M_30FPS_10BIT
+[cam] [parse_sensor_busid]-1922: bus_id =  2
+[cam] [parse_sensor_i2caddr]-1933: sns_i2c_addr =  37
+[cam] [parse_sensor_mipidev]-1944: mipi_dev =  0
+[cam] [parse_sensor_laneid]-1955: Lane_id =  1, 0, 2, -1, -1
+[cam] [parse_sensor_pnswap]-1966: pn_swap =  0, 0, 0, 0, 0
+[cam] MMF Version:6b03c2762-64bit
+[cam] Create VBPool[0], size: (3110400 * 5) = 15552000 bytes
+[cam] Create VBPool[1], size: (1382400 * 5) = 6912000 bytes
+[cam] Create VBPool[2], size: (2764800 * 3) = 8294400 bytes
+[cam] Total memory of VB pool: 30758400 bytes
+[cam] Initialize SYS and VB
+[cam] Cannot open '/dev/cvi-vo': 2, No such file or directory
+[cam] Initialize VI
+[cam] ISP Vipipe(0) Allocate pa(0x8d056000) va(0x0x3fdd790000) size(311584)
+[cam] stSnsrMode.u16Width 1920 stSnsrMode.u16Height 1080 30.000000 wdrMode 0 pstSnsObj 0x3fde2473e8
+[cam] [SAMPLE_COMM_VI_StartMIPI]-494: sensor 0 stDevAttr.devno 0
+[cam] awbInit ver 6.9@2021500
+[cam] 0 R:1400 B:3100 CT:2850
+[cam] 1 R:1500 B:2500 CT:3900
+[cam] 2 R:2300 B:1600 CT:6500
+[cam] Golden 1024 1024 1024
+[cam] WB Quadratic:0
+[cam] isWdr:0
+[cam] ViPipe:0,===GC2083 1080P 30fps 10bit LINE Init OK!===
+[cam] ********************************************************************************
+[cam] cvi_bin_isp message
+[cam] gerritId:      NULL           commitId:      6b03c2762      
+[cam] md5:           1b6dd6bec5dfd417b8d1136b9ca0aa67
+[cam] sensorNum      1              
+[cam] sensorName0    2083           
+[cam] PQBIN message
+[cam] gerritId:      80171          commitId:      5c9d8fc5d      
+[cam] md5:           ba5a510e093ad42db6788e6c2d13169e
+[cam] sensorNum      3              
+[cam] sensorName0    2053           
+[cam] author:        wanqiang.he    desc:          思博慧CV1812H_GC2083_RGB_mode_V1.0.0
+[cam] createTime:    2023-08-04 16:48:08version:       V1.1           
+[cam] tool Version:       v3.0.5.24           mode:      
+[cam] ********************************************************************************
+[cam] sensorName(0) mismatch, mwSns:2083 != pqBinSns:2053
+[cam] 20261125 12:32:34.324 0387 E isp AF_GetAttr:574 pstFocusMpiAttr is NULL
+[cam] JSON_READ_ERR:NOT_EXIST 71(L) lblc
+[cam] JSON_READ_ERR:NOT_EXIST 71(L) lblcLut
+[cam] JSON_READ_ERR:NOT_EXIST 71(L) clut_hsl
+[cam] JSON_READ_ERR:DATA_TYPE 77(L) vc_motion.MotionThreshold
+[cam] JSON_READ_ERR:NOT_EXIST 71(L) teaisp_bnr
+[cam] JSON_READ_ERR:NOT_EXIST 71(L) teaisp_bnr_np
+[cam] JSON_READ_ERR:NOT_EXIST 71(L) AWBAttrEx.u16MultiLSThr
+[cam] JSON_READ_ERR:NOT_EXIST 71(L) AWBAttrEx.u16CALumaDiff
+[cam] JSON_READ_ERR:NOT_EXIST 71(L) AWBAttrEx.u16CAAdjustRatio
+[cam] JSON_READ_ERR:NOT_EXIST 71(L) AWBAttrEx.stInterference
+[cam] JSON_READ_ERR:NOT_EXIST 71(L) FocusAttr
+[cam] 20261125 12:32:34.674 0387 E isp AF_SetAttr:558 pstFocusMpiAttr is NULL
+[cam] [SAMPLE_COMM_ISP_Thread]-390: ISP Dev 0 running!
+[cam] Initialize VPSS
+[cam] ---------VPSS[0]---------
+[cam] Input size: (1920x1080)
+[cam] Input format: (19)
+[cam] VPSS physical device number: 1
+[cam] Src Frame Rate: -1
+[cam] Dst Frame Rate: -1
+[cam]     --------CHN[0]-------
+[cam]     Output size: (1280x720)
+[cam]     Depth: 1
+[cam]     Do normalization: 0
+[cam]         Src Frame Rate: -1
+[cam]         Dst Frame Rate: -1
+[cam]     ----------------------
+[cam]     --------CHN[1]-------
+[cam]     Output size: (1280x720)
+[cam]     Depth: 1
+[cam]     Do normalization: 0
+[cam]         Src Frame Rate: -1
+[cam]         Dst Frame Rate: -1
+[cam]     ----------------------
+[cam] ------------------------
+[cam] Bind VI with VPSS Grp(0), Chn(0)
+[cam] Attach VBPool(0) to VPSS Grp(0) Chn(0)
+[cam] Attach VBPool(1) to VPSS Grp(0) Chn(1)
+[cam] Initialize VENC
+[cam] venc codec: h264
+[cam] venc frame size: 1280x720
+[cam] Initialize RTSP
+[cam] rtsp://192.168.5.9/h264
+[cam] prio:0
+[cam] Cannot open '/dev/cvi-vo': 2, No such file or directory
+[cam] Enter TDL thread
+[cam] Enter encoder thread
+[cam] 0 R:1165 B:3087 CT:2688
+[cam] 1 R:1464 B:2327 CT:3937
+[cam] 2 R:1974 B:1613 CT:7225
+[cam] Golden 1464 1024 2327
+[cam] wdrLEOnly:1
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795609955.777, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 2, "load1": 3.23, "temp_c": 44.1, "avail_mb": 130.4}  (170 bytes)
+[post] <urlopen error timed out>
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795609959.993, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 6, "load1": 3.54, "temp_c": 47.2, "avail_mb": 129.8}  (170 bytes)
+[post] <urlopen error timed out>
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795609964.015, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 10, "load1": 3.54, "temp_c": 47.9, "avail_mb": 129.8}  (171 bytes)
+[post] <urlopen error timed out>
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795609968.033, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 14, "load1": 3.57, "temp_c": 48.6, "avail_mb": 129.8}  (171 bytes)
+[post] <urlopen error timed out>
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795609972.057, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 18, "load1": 3.53, "temp_c": 48.6, "avail_mb": 129.8}  (171 bytes)
+[post] <urlopen error timed out>
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795609976.08, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 22, "load1": 3.57, "temp_c": 49.0, "avail_mb": 129.7}  (170 bytes)
+[post] <urlopen error timed out>
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795609980.103, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 26, "load1": 3.52, "temp_c": 49.3, "avail_mb": 129.9}  (171 bytes)
+[post] <urlopen error timed out>
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795609984.122, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 30, "load1": 3.48, "temp_c": 49.3, "avail_mb": 129.8}  (171 bytes)
+[post] <urlopen error timed out>
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795609988.146, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 34, "load1": 3.48, "temp_c": 49.3, "avail_mb": 129.8}  (171 bytes)
+[post] <urlopen error timed out>
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795609992.166, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 38, "load1": 3.76, "temp_c": 49.7, "avail_mb": 129.8}  (171 bytes)
+[post] <urlopen error timed out>
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795609996.185, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 42, "load1": 3.78, "temp_c": 49.7, "avail_mb": 129.8}  (171 bytes)
+[post] <urlopen error timed out>
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610000.207, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 46, "load1": 3.72, "temp_c": 49.7, "avail_mb": 129.8}  (171 bytes)
+[post] <urlopen error timed out>
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610004.228, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 50, "load1": 3.66, "temp_c": 49.7, "avail_mb": 129.8}  (171 bytes)
+[post] <urlopen error timed out>
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610008.245, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 54, "load1": 3.66, "temp_c": 50.0, "avail_mb": 129.7}  (171 bytes)
+[post] <urlopen error timed out>
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610012.267, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 58, "load1": 3.61, "temp_c": 49.7, "avail_mb": 129.7}  (171 bytes)
+[post] <urlopen error timed out>
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610016.283, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 62, "load1": 3.56, "temp_c": 50.0, "avail_mb": 129.6}  (171 bytes)
+[post] <urlopen error timed out>
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610020.306, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 66, "load1": 3.51, "temp_c": 50.0, "avail_mb": 129.9}  (171 bytes)
+[post] <urlopen error timed out>
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610024.326, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 70, "load1": 3.71, "temp_c": 50.0, "avail_mb": 129.9}  (171 bytes)
+[post] <urlopen error timed out>
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610028.344, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 74, "load1": 3.71, "temp_c": 50.4, "avail_mb": 129.8}  (171 bytes)
+[post] <urlopen error timed out>
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610032.366, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 78, "load1": 3.82, "temp_c": 50.0, "avail_mb": 129.8}  (171 bytes)
+[post] <urlopen error timed out>
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610036.38, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 82, "load1": 3.75, "temp_c": 50.4, "avail_mb": 129.8}  (170 bytes)
+[post] <urlopen error timed out>
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610040.404, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 86, "load1": 3.77, "temp_c": 50.4, "avail_mb": 129.8}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610042.439, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 88, "load1": 3.77, "temp_c": 50.4, "avail_mb": 129.7}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610044.479, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 90, "load1": 3.71, "temp_c": 50.4, "avail_mb": 129.7}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610046.527, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 92, "load1": 3.71, "temp_c": 50.4, "avail_mb": 129.7}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610048.563, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 94, "load1": 3.71, "temp_c": 50.4, "avail_mb": 129.7}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610050.601, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 96, "load1": 3.65, "temp_c": 50.4, "avail_mb": 129.7}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610052.636, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 98, "load1": 3.65, "temp_c": 50.4, "avail_mb": 129.7}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610054.672, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 100, "load1": 4.0, "temp_c": 50.4, "avail_mb": 129.7}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610056.708, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 102, "load1": 4.0, "temp_c": 50.4, "avail_mb": 129.7}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610058.756, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 104, "load1": 4.0, "temp_c": 50.4, "avail_mb": 129.7}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610060.79, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 107, "load1": 4.0, "temp_c": 50.4, "avail_mb": 129.7}  (170 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610062.822, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 109, "load1": 4.0, "temp_c": 50.4, "avail_mb": 129.8}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610064.858, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 111, "load1": 3.92, "temp_c": 50.4, "avail_mb": 129.8}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610066.888, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 113, "load1": 3.92, "temp_c": 50.7, "avail_mb": 129.8}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610068.925, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 115, "load1": 3.92, "temp_c": 50.4, "avail_mb": 129.8}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610070.965, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 117, "load1": 3.93, "temp_c": 50.4, "avail_mb": 129.8}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610073.0, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 119, "load1": 3.93, "temp_c": 50.4, "avail_mb": 129.8}  (170 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610075.051, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 121, "load1": 3.85, "temp_c": 50.4, "avail_mb": 129.8}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610077.088, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 123, "load1": 3.85, "temp_c": 50.4, "avail_mb": 129.8}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610079.122, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 125, "load1": 3.85, "temp_c": 50.4, "avail_mb": 129.7}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610081.152, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 127, "load1": 3.78, "temp_c": 50.4, "avail_mb": 129.7}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610083.186, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 129, "load1": 3.78, "temp_c": 50.7, "avail_mb": 129.6}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610085.218, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 131, "load1": 4.04, "temp_c": 50.7, "avail_mb": 129.7}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610087.25, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 133, "load1": 4.04, "temp_c": 50.7, "avail_mb": 129.7}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610089.282, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 135, "load1": 4.04, "temp_c": 50.7, "avail_mb": 129.7}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610091.32, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 137, "load1": 4.04, "temp_c": 50.7, "avail_mb": 129.6}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610093.352, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 139, "load1": 4.04, "temp_c": 50.7, "avail_mb": 129.6}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610095.385, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 141, "load1": 3.95, "temp_c": 50.7, "avail_mb": 129.6}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610097.417, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 143, "load1": 3.95, "temp_c": 50.7, "avail_mb": 129.6}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610099.45, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 145, "load1": 3.88, "temp_c": 50.7, "avail_mb": 129.7}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610101.483, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 147, "load1": 3.88, "temp_c": 50.7, "avail_mb": 129.7}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610103.514, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 149, "load1": 3.88, "temp_c": 50.7, "avail_mb": 129.7}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610105.548, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 151, "load1": 3.81, "temp_c": 50.7, "avail_mb": 129.7}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610107.582, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 153, "load1": 3.81, "temp_c": 50.7, "avail_mb": 129.8}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610109.615, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 155, "load1": 3.74, "temp_c": 50.7, "avail_mb": 129.7}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610111.647, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 157, "load1": 3.74, "temp_c": 50.7, "avail_mb": 129.7}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610113.68, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 159, "load1": 3.74, "temp_c": 50.7, "avail_mb": 129.7}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610115.715, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 161, "load1": 3.68, "temp_c": 50.7, "avail_mb": 129.7}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610117.754, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 163, "load1": 3.68, "temp_c": 50.7, "avail_mb": 129.7}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610119.79, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 166, "load1": 3.79, "temp_c": 50.7, "avail_mb": 129.7}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610121.832, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 168, "load1": 3.79, "temp_c": 50.7, "avail_mb": 129.7}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610123.87, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 170, "load1": 3.79, "temp_c": 50.7, "avail_mb": 129.7}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610125.907, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 172, "load1": 3.89, "temp_c": 50.7, "avail_mb": 129.7}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610127.942, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 174, "load1": 3.89, "temp_c": 50.7, "avail_mb": 129.6}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610129.974, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 176, "load1": 3.81, "temp_c": 50.7, "avail_mb": 129.6}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610132.117, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 178, "load1": 3.81, "temp_c": 50.7, "avail_mb": 129.7}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610134.28, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 180, "load1": 3.83, "temp_c": 50.7, "avail_mb": 129.5}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610136.313, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 182, "load1": 3.83, "temp_c": 50.7, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610138.476, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 184, "load1": 3.83, "temp_c": 50.7, "avail_mb": 129.5}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610140.507, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 186, "load1": 3.76, "temp_c": 50.7, "avail_mb": 129.5}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610142.538, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 188, "load1": 3.76, "temp_c": 50.7, "avail_mb": 129.5}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610144.57, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 190, "load1": 3.7, "temp_c": 50.7, "avail_mb": 129.4}  (170 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610146.602, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 192, "load1": 3.7, "temp_c": 50.7, "avail_mb": 129.4}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610148.634, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 194, "load1": 3.7, "temp_c": 50.7, "avail_mb": 129.4}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610150.666, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 196, "load1": 4.05, "temp_c": 50.7, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610152.703, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 198, "load1": 4.05, "temp_c": 50.7, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610154.736, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 200, "load1": 4.04, "temp_c": 50.7, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610156.768, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 202, "load1": 4.04, "temp_c": 50.7, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610158.801, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 205, "load1": 4.04, "temp_c": 50.7, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610160.833, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 207, "load1": 3.96, "temp_c": 50.7, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610162.866, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 209, "load1": 3.96, "temp_c": 50.7, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610164.898, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 211, "load1": 3.88, "temp_c": 50.7, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610166.93, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 213, "load1": 3.88, "temp_c": 50.7, "avail_mb": 128.9}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610168.962, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 215, "load1": 3.88, "temp_c": 51.1, "avail_mb": 128.9}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610170.996, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 217, "load1": 3.81, "temp_c": 50.7, "avail_mb": 128.8}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610173.031, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 219, "load1": 3.81, "temp_c": 50.7, "avail_mb": 128.7}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610175.062, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 221, "load1": 3.75, "temp_c": 50.7, "avail_mb": 128.8}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610177.097, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 223, "load1": 3.75, "temp_c": 50.7, "avail_mb": 129.0}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610179.13, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 225, "load1": 3.75, "temp_c": 50.7, "avail_mb": 129.0}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610181.161, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 227, "load1": 4.09, "temp_c": 50.7, "avail_mb": 129.0}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610183.194, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 229, "load1": 4.09, "temp_c": 50.7, "avail_mb": 129.0}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610185.226, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 231, "load1": 4.08, "temp_c": 51.1, "avail_mb": 129.0}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610187.258, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 233, "load1": 4.08, "temp_c": 50.7, "avail_mb": 129.0}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610189.29, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 235, "load1": 3.99, "temp_c": 50.7, "avail_mb": 128.9}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610191.322, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 237, "load1": 3.99, "temp_c": 51.1, "avail_mb": 128.9}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610193.354, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 239, "load1": 3.99, "temp_c": 51.1, "avail_mb": 128.9}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610195.388, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 241, "load1": 3.91, "temp_c": 50.7, "avail_mb": 128.9}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610197.422, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 243, "load1": 3.91, "temp_c": 51.1, "avail_mb": 128.8}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610199.456, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 245, "load1": 3.84, "temp_c": 51.1, "avail_mb": 128.9}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610201.49, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 247, "load1": 3.84, "temp_c": 51.1, "avail_mb": 128.9}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610203.519, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 249, "load1": 3.84, "temp_c": 51.1, "avail_mb": 128.8}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610205.554, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 251, "load1": 3.77, "temp_c": 51.1, "avail_mb": 128.8}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610207.586, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 253, "load1": 3.77, "temp_c": 51.1, "avail_mb": 128.8}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610209.618, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 255, "load1": 4.03, "temp_c": 51.1, "avail_mb": 128.8}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610211.653, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 257, "load1": 4.03, "temp_c": 51.1, "avail_mb": 128.8}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610213.686, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 259, "load1": 4.03, "temp_c": 51.1, "avail_mb": 128.8}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610215.718, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 261, "load1": 4.03, "temp_c": 51.1, "avail_mb": 128.8}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610217.751, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 263, "load1": 4.03, "temp_c": 51.1, "avail_mb": 128.8}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610219.783, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 266, "load1": 3.95, "temp_c": 51.1, "avail_mb": 128.8}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610221.814, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 268, "load1": 3.95, "temp_c": 51.1, "avail_mb": 128.9}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610223.846, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 270, "load1": 3.95, "temp_c": 51.1, "avail_mb": 128.9}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610225.884, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 272, "load1": 3.87, "temp_c": 51.1, "avail_mb": 128.9}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610227.974, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 274, "load1": 3.87, "temp_c": 51.1, "avail_mb": 129.5}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610230.015, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 276, "load1": 3.8, "temp_c": 51.1, "avail_mb": 129.4}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610232.048, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 278, "load1": 3.8, "temp_c": 51.1, "avail_mb": 129.4}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610234.082, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 280, "load1": 3.8, "temp_c": 51.1, "avail_mb": 129.4}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610236.113, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 282, "load1": 3.74, "temp_c": 51.1, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610238.146, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 284, "load1": 3.74, "temp_c": 51.1, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610240.178, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 286, "load1": 3.92, "temp_c": 51.1, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610242.211, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 288, "load1": 3.92, "temp_c": 51.1, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610244.242, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 290, "load1": 3.92, "temp_c": 51.1, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610246.275, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 292, "load1": 4.24, "temp_c": 51.1, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610248.307, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 294, "load1": 4.24, "temp_c": 51.1, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610250.343, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 296, "load1": 4.3, "temp_c": 51.1, "avail_mb": 129.4}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610252.376, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 298, "load1": 4.3, "temp_c": 51.1, "avail_mb": 129.3}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610254.406, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 300, "load1": 4.2, "temp_c": 51.1, "avail_mb": 129.3}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610256.44, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 302, "load1": 4.2, "temp_c": 51.1, "avail_mb": 129.4}  (170 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610258.474, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 304, "load1": 4.2, "temp_c": 51.1, "avail_mb": 129.4}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610260.506, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 306, "load1": 4.1, "temp_c": 51.1, "avail_mb": 129.4}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610262.539, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 308, "load1": 4.1, "temp_c": 51.1, "avail_mb": 129.4}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610264.57, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 310, "load1": 4.02, "temp_c": 51.1, "avail_mb": 129.4}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610266.604, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 312, "load1": 4.02, "temp_c": 51.1, "avail_mb": 129.5}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610268.634, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 314, "load1": 4.02, "temp_c": 51.4, "avail_mb": 129.5}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610270.672, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 316, "load1": 3.93, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610272.704, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 318, "load1": 3.93, "temp_c": 51.1, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610274.736, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 320, "load1": 4.02, "temp_c": 51.1, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610276.769, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 322, "load1": 4.02, "temp_c": 51.1, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610278.801, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 325, "load1": 4.02, "temp_c": 51.1, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610280.834, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 327, "load1": 4.02, "temp_c": 51.1, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610282.865, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 329, "load1": 4.02, "temp_c": 51.1, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610284.898, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 331, "load1": 3.94, "temp_c": 51.1, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610286.93, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 333, "load1": 3.94, "temp_c": 51.1, "avail_mb": 129.3}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610288.962, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 335, "load1": 3.94, "temp_c": 51.1, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610290.998, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 337, "load1": 3.86, "temp_c": 51.1, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610293.03, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 339, "load1": 3.86, "temp_c": 51.4, "avail_mb": 129.3}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610295.062, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 341, "load1": 3.79, "temp_c": 51.4, "avail_mb": 129.5}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610297.096, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 343, "load1": 3.79, "temp_c": 51.1, "avail_mb": 129.5}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610299.129, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 345, "load1": 3.79, "temp_c": 51.1, "avail_mb": 129.5}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610301.162, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 347, "load1": 3.73, "temp_c": 51.1, "avail_mb": 129.5}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610303.195, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 349, "load1": 3.73, "temp_c": 51.1, "avail_mb": 129.5}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610305.228, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 351, "load1": 4.07, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610307.262, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 353, "load1": 4.07, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610309.295, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 355, "load1": 4.07, "temp_c": 51.1, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610311.326, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 357, "load1": 4.06, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610313.358, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 359, "load1": 4.06, "temp_c": 51.1, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610315.39, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 361, "load1": 3.98, "temp_c": 51.1, "avail_mb": 129.4}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610317.432, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 363, "load1": 3.98, "temp_c": 51.1, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610319.469, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 365, "load1": 3.9, "temp_c": 51.1, "avail_mb": 129.4}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610321.516, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 367, "load1": 3.9, "temp_c": 51.1, "avail_mb": 129.4}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610323.552, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 369, "load1": 3.9, "temp_c": 51.1, "avail_mb": 129.4}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610325.589, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 371, "load1": 3.83, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610327.622, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 373, "load1": 3.83, "temp_c": 51.1, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610329.654, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 375, "load1": 3.76, "temp_c": 51.4, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610331.686, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 377, "load1": 3.76, "temp_c": 51.1, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610333.717, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 379, "load1": 3.76, "temp_c": 51.4, "avail_mb": 129.2}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610335.753, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 381, "load1": 4.1, "temp_c": 51.1, "avail_mb": 129.5}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610337.786, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 384, "load1": 4.1, "temp_c": 51.4, "avail_mb": 129.5}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610339.818, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 386, "load1": 4.09, "temp_c": 51.1, "avail_mb": 129.5}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610341.852, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 388, "load1": 4.09, "temp_c": 51.1, "avail_mb": 129.5}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610343.881, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 390, "load1": 4.09, "temp_c": 51.1, "avail_mb": 129.5}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610345.914, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 392, "load1": 4.0, "temp_c": 51.4, "avail_mb": 129.5}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610347.946, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 394, "load1": 4.0, "temp_c": 51.1, "avail_mb": 129.5}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610349.982, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 396, "load1": 4.0, "temp_c": 51.1, "avail_mb": 129.4}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610352.014, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 398, "load1": 4.0, "temp_c": 51.4, "avail_mb": 129.4}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610354.046, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 400, "load1": 4.0, "temp_c": 51.4, "avail_mb": 129.4}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610356.078, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 402, "load1": 3.92, "temp_c": 51.1, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610358.11, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 404, "load1": 3.92, "temp_c": 51.1, "avail_mb": 129.4}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610360.146, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 406, "load1": 3.85, "temp_c": 51.1, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610362.178, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 408, "load1": 3.85, "temp_c": 51.1, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610364.209, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 410, "load1": 3.85, "temp_c": 51.1, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610366.243, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 412, "load1": 3.78, "temp_c": 51.4, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610368.278, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 414, "load1": 3.78, "temp_c": 51.4, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610370.31, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 416, "load1": 3.96, "temp_c": 51.4, "avail_mb": 129.3}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610372.342, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 418, "load1": 3.96, "temp_c": 51.4, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610374.374, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 420, "load1": 3.96, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610376.408, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 422, "load1": 4.04, "temp_c": 51.1, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610378.44, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 424, "load1": 4.04, "temp_c": 51.1, "avail_mb": 129.3}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610380.475, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 426, "load1": 3.96, "temp_c": 51.1, "avail_mb": 129.5}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610382.506, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 428, "load1": 3.96, "temp_c": 51.1, "avail_mb": 129.5}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610384.537, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 430, "load1": 3.96, "temp_c": 51.1, "avail_mb": 129.5}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610386.571, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 432, "load1": 3.96, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610388.603, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 434, "load1": 3.96, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610390.638, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 436, "load1": 3.89, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610392.67, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 438, "load1": 3.89, "temp_c": 51.4, "avail_mb": 129.4}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610394.702, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 440, "load1": 3.81, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610396.734, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 442, "load1": 3.81, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610398.771, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 444, "load1": 3.81, "temp_c": 51.1, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610400.804, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 447, "load1": 4.15, "temp_c": 51.4, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610402.838, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 449, "load1": 4.15, "temp_c": 51.4, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610404.869, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 451, "load1": 4.14, "temp_c": 51.4, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610406.902, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 453, "load1": 4.14, "temp_c": 51.4, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610408.935, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 455, "load1": 4.14, "temp_c": 51.4, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610410.966, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 457, "load1": 4.05, "temp_c": 51.4, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610412.998, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 459, "load1": 4.05, "temp_c": 51.4, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610415.031, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 461, "load1": 3.96, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610417.066, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 463, "load1": 3.96, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610419.098, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 465, "load1": 3.96, "temp_c": 51.1, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610421.13, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 467, "load1": 3.88, "temp_c": 51.4, "avail_mb": 129.4}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610423.162, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 469, "load1": 3.88, "temp_c": 51.4, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610425.196, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 471, "load1": 3.81, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610427.23, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 473, "load1": 3.81, "temp_c": 51.4, "avail_mb": 129.4}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610429.262, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 475, "load1": 3.81, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610431.294, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 477, "load1": 4.07, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610433.326, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 479, "load1": 4.07, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610435.358, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 481, "load1": 4.14, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610437.394, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 483, "load1": 4.14, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610439.426, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 485, "load1": 4.14, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610441.458, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 487, "load1": 4.21, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610443.49, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 489, "load1": 4.21, "temp_c": 51.4, "avail_mb": 129.3}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610445.522, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 491, "load1": 4.12, "temp_c": 51.4, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610447.558, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 493, "load1": 4.12, "temp_c": 51.4, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610449.591, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 495, "load1": 4.03, "temp_c": 51.4, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610451.626, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 497, "load1": 4.03, "temp_c": 51.4, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610453.657, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 499, "load1": 4.03, "temp_c": 51.4, "avail_mb": 129.5}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610455.69, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 501, "load1": 3.94, "temp_c": 51.4, "avail_mb": 129.5}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610457.722, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 503, "load1": 3.94, "temp_c": 51.4, "avail_mb": 129.5}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610459.754, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 505, "load1": 3.87, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610461.786, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 508, "load1": 3.87, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610463.82, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 510, "load1": 3.87, "temp_c": 51.4, "avail_mb": 129.4}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610465.854, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 512, "load1": 3.96, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610467.883, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 514, "load1": 3.96, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610469.918, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 516, "load1": 4.04, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610471.95, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 518, "load1": 4.04, "temp_c": 51.4, "avail_mb": 129.4}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610473.982, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 520, "load1": 4.04, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610476.019, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 522, "load1": 3.96, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610478.048, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 524, "load1": 3.96, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610480.082, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 526, "load1": 3.88, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610482.115, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 528, "load1": 3.88, "temp_c": 51.4, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610484.146, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 530, "load1": 3.88, "temp_c": 51.4, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610486.182, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 532, "load1": 3.81, "temp_c": 51.4, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610488.213, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 534, "load1": 3.81, "temp_c": 51.4, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610490.246, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 536, "load1": 3.75, "temp_c": 51.4, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610492.278, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 538, "load1": 3.75, "temp_c": 51.4, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610494.31, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 540, "load1": 3.75, "temp_c": 51.4, "avail_mb": 129.5}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610496.346, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 542, "load1": 4.09, "temp_c": 51.4, "avail_mb": 129.5}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610498.378, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 544, "load1": 4.09, "temp_c": 51.4, "avail_mb": 129.5}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610500.41, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 546, "load1": 4.08, "temp_c": 51.4, "avail_mb": 129.5}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610502.442, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 548, "load1": 4.08, "temp_c": 51.4, "avail_mb": 129.5}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610504.474, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 550, "load1": 4.08, "temp_c": 51.4, "avail_mb": 129.5}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610506.511, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 552, "load1": 4.07, "temp_c": 51.4, "avail_mb": 129.5}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610508.542, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 554, "load1": 4.07, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610510.574, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 556, "load1": 4.15, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610512.607, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 558, "load1": 4.15, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610514.642, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 560, "load1": 4.06, "temp_c": 51.4, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610516.674, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 562, "load1": 4.06, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610518.706, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 564, "load1": 4.06, "temp_c": 51.4, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610520.74, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 566, "load1": 3.97, "temp_c": 51.4, "avail_mb": 129.3}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610522.773, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 568, "load1": 3.97, "temp_c": 51.4, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610524.806, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 571, "load1": 4.21, "temp_c": 51.4, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610526.839, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 573, "load1": 4.21, "temp_c": 51.4, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610528.87, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 575, "load1": 4.21, "temp_c": 51.4, "avail_mb": 129.3}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610530.902, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 577, "load1": 4.2, "temp_c": 51.4, "avail_mb": 129.3}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610532.934, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 579, "load1": 4.2, "temp_c": 51.4, "avail_mb": 129.4}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610534.969, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 581, "load1": 4.1, "temp_c": 51.4, "avail_mb": 129.4}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610537.002, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 583, "load1": 4.1, "temp_c": 51.4, "avail_mb": 129.3}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610539.032, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 585, "load1": 4.1, "temp_c": 51.4, "avail_mb": 129.4}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610541.066, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 587, "load1": 4.01, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610543.098, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 589, "load1": 4.01, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610545.134, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 591, "load1": 3.93, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610547.166, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 593, "load1": 3.93, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610549.198, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 595, "load1": 3.93, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610551.24, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 597, "load1": 3.86, "temp_c": 51.4, "avail_mb": 129.4}  (171 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610553.275, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 599, "load1": 3.86, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610555.311, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 601, "load1": 3.79, "temp_c": 51.4, "avail_mb": 129.4}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610557.347, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 603, "load1": 3.79, "temp_c": 51.4, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610559.4, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 605, "load1": 3.79, "temp_c": 51.4, "avail_mb": 129.2}  (170 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610561.437, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 607, "load1": 3.88, "temp_c": 51.4, "avail_mb": 129.3}  (172 bytes)
+[infer] {"type": "infer", "node": "nodeA", "ts": 1795610563.472, "stat": "inferring", "count": null, "frames": 0, "uptime_s": 609, "load1": 3.88, "temp_c": 51.4, "avail_mb": 129.3}  (172 bytes)
