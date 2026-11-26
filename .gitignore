@@ -24,3 +24,9 @@ venv/
 # 默认保留；若想让仓库更轻（约 26MB -> 0.6MB），取消下面两行注释
 # /共享/tools/img/
 # /共享/tools/ref/
+
+# ===== D 看板运行时产物 =====
+/D/dashboard/run_*.log
+/D/dashboard/run_*.err
+/D/dashboard/screenshots/*.tmp
+/D/data/mock/
