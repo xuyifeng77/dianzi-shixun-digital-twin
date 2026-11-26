@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>四目边缘 · 实验室数字孪生 · PC 看板</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">
+    <span class="logo">四目边缘</span>
+    <span class="sub">实验室数字孪生 · PC 看板</span>
+    <span class="ver">D3 · mock</span>
+  </div>
+  <div class="right">
+    <span class="dot" id="srvdot"></span>
+    <span id="clock" class="clock">--:--:--</span>
+  </div>
+</header>
+
+<div class="overview" id="overview">
+  <div class="ov"><span class="k">在线节点</span><span class="v" id="ov-online">–/–</span></div>
+  <div class="ov"><span class="k">当前报警</span><span class="v" id="ov-alarm">–</span></div>
+  <div class="ov"><span class="k">今日事件</span><span class="v" id="ov-events">–</span></div>
+  <div class="ov"><span class="k">链路超时口径</span><span class="v small" id="ov-timeout">6 s / 30 s</span></div>
+  <div class="ov grow"><span class="k">数据来源</span><span class="v small" id="ov-src">mock_feed（假数据）</span></div>
+</div>
+
+<nav class="tabs" id="tabs">
+  <button data-tab="nodes" class="on">节点状态</button>
+  <button data-tab="curves">实时曲线</button>
+  <button data-tab="events">报警时间线</button>
+  <span class="hint" id="hint"></span>
+</nav>
+
+<main>
+  <!-- 1 节点状态 -->
+  <section id="tab-nodes" class="tab">
+    <div class="cards" id="nodecards"></div>
+    <div class="panelrow">
+      <div class="card panel">
+        <h3>最近事件 <span class="u">最新 5 条 · 全量见"报警时间线"</span></h3>
+        <ul class="mini" id="recent"></ul>
+      </div>
+      <div class="card panel">
+        <h3>本页字段从哪来</h3>
+        <table class="mini-tbl">
+          <tr><td>等级 / 节奏</td><td><code>@A,&lt;lv&gt;,&lt;src&gt;</code> → 契约 3 §6.1</td></tr>
+          <tr><td>温度 / 烟雾 / 火焰</td><td><code>@E,...</code>，2 s 一帧</td></tr>
+          <tr><td>本组人次</td><td><code>@C,&lt;n&gt;</code> 累计值，回退即判重启</td></tr>
+          <tr><td>门磁</td><td><code>@D,0|1</code>，只在本页显示</td></tr>
+          <tr><td>拒绝 / 刷卡</td><td><code>@R,&lt;UID&gt;</code> 失败 → <code>deny</code></td></tr>
+          <tr><td>在线 / 完整性</td><td>按 <code>@E</code> 到达间隔与帧数推算</td></tr>
+        </table>
+      </div>
+    </div>
+    <p class="footnote">
+      在线判定：<b>≤ 6 s</b> 有新 <code>@E</code> 判在线 · <b>6–30 s</b> 判链路异常 · <b>&gt; 30 s</b> 判离线
+      （契约 3 v1.1f §1.1：<code>@E</code> 2 s/帧、bridge 每 10 s <code>@Q</code> 保活）。
+      完整性 = 收到帧数 ÷ 期望帧数（按 2 s 一帧推算）。门磁只在本页显示，不进事件表。
+    </p>
+  </section>
+
+  <!-- 2 实时曲线 -->
+  <section id="tab-curves" class="tab hide">
+    <div class="subtabs">
+      <button data-sub="env" class="on">环境三路（@E）</button>
+      <button data-sub="link">链路三路（@A/链路指标）</button>
+      <span class="hint">窗口 5 min · 每 2 s 一点 · 缺测断线不补 0</span>
+    </div>
+    <div class="charts" id="sub-env">
+      <div class="chartcard"><h3>温度 <span class="u">℃</span><span class="tag">@E.t</span></h3><canvas id="c-t"></canvas></div>
+      <div class="chartcard"><h3>烟雾 <span class="u">0–255</span><span class="tag">@E.smoke</span></h3><canvas id="c-smoke"></canvas></div>
+      <div class="chartcard"><h3>火焰 <span class="u">0–255</span><span class="tag">@E.flame</span></h3><canvas id="c-flame"></canvas></div>
+    </div>
+    <div class="charts hide" id="sub-link">
+      <div class="chartcard"><h3>端到端延迟 <span class="u">ms</span><span class="tag">lat_e2e_ms</span></h3><canvas id="c-lat"></canvas></div>
+      <div class="chartcard"><h3>上行带宽 <span class="u">B/s</span><span class="tag">bw_Bps</span></h3><canvas id="c-bw"></canvas></div>
+      <div class="chartcard"><h3>PC CPU <span class="u">%</span><span class="tag">pc_cpu_pct</span></h3><canvas id="c-cpu"></canvas></div>
+    </div>
+  </section>
+
+  <!-- 3 报警时间线 -->
+  <section id="tab-events" class="tab hide">
+    <table class="ev">
+      <thead>
+        <tr><th>时间 ts</th><th>节点</th><th>来源 src</th><th>事件 event</th><th>等级 buzzer_level</th><th>节奏 pattern_ms</th><th>备注</th></tr>
+      </thead>
+      <tbody id="evbody"></tbody>
+    </table>
+    <p class="footnote">
+      按 <code>ts</code> 排序展示（非到达顺序），落盘 <code>data/raw/events/&lt;YYYYMMDD&gt;.csv</code> 为 <code>ts</code> 升序（契约 3 §8 第 14 条）。
+      等级与节奏一一对应：危险 <code>1000/500</code> · 注意 <code>150/2850</code> · 拒绝 <code>80x2/400</code>，<b>不显示频率</b>（有源蜂鸣器无频率量）。
+    </p>
+  </section>
+</main>
+
+<script src="/static/dash.js"></script>
+</body>
+</html>
