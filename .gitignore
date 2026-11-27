@@ -25,8 +25,7 @@ venv/
 # /共享/tools/img/
 # /共享/tools/ref/
 
-# ===== D 看板运行时产物 =====
-/D/dashboard/run_*.log
-/D/dashboard/run_*.err
-/D/dashboard/screenshots/*.tmp
+# ===== D 看板运行时产物（D3 起看板就在 D 根，不再有 dashboard/ 子目录）=====
+/D/run_*.log
+/D/run_*.err
 /D/data/mock/

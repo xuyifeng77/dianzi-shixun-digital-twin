@@ -176,7 +176,9 @@ void sampleSensors() {
   float t = ds18.getTempCByIndex(0);     /* 9 位分辨率，阻塞约 94ms，可接受 */
   if (t > -50 && t < 125) env.temp = t;
 
-  float h = dht.readHumidity();          /* DHT11 只取湿度，温度不用 */
+  /* ⑥ 1 s 采一次不会 NaN：Adafruit DHT 库在间隔 <2 s 时返回上次缓存值，不是 NaN。
+     但 DHT11 本身每 2 s 才更新一次湿度，所以 1 s 采样看到的是重复值，不是新数据。 */
+  float h = dht.readHumidity();
   if (!isnan(h)) env.humi = h;
 
   if (millis() - bootAt < WARMUP_MS) env.smoke = 0;   /* 预热期不可信 */
