@@ -59,8 +59,28 @@ import urllib.request
 
 # ---------------------------------------------------------------- 配置
 
-NODE = os.environ.get("NODE", "nodeA")
-ALLOWED_NODES = {"nodeA", "nodeB", "nodeC", "nodeD"}   # ④ 白名单，写错直接退出
+# 契约 4 v1.0（2026-11-27 A 拍板）：node 主值改为 milky-a … milky-d
+CANON_NODES  = ("milky-a", "milky-b", "milky-c", "milky-d")
+LEGACY_ALIAS = {"nodea": "milky-a", "nodeb": "milky-b",
+                "nodec": "milky-c", "noded": "milky-d"}
+
+
+def normalize_node(raw):
+    """把 NODE 归一成主值；旧别名（nodeA…nodeD）接受但打 WARN。"""
+    n = (raw or "").strip().lower()
+    if n in CANON_NODES:
+        return n
+    if n in LEGACY_ALIAS:
+        canon = LEGACY_ALIAS[n]
+        print("[WARN] NODE=%r 是旧别名，已归一为 %r（契约 4 v1.0 起主值为 milky-*）"
+              % (raw, canon), flush=True)
+        return canon
+    raise SystemExit(
+        "NODE=%r 不在白名单内。主值只允许 %s（旧别名 %s 亦可用，会自动归一）"
+        % (raw, list(CANON_NODES), sorted(LEGACY_ALIAS)))
+
+
+NODE = normalize_node(os.environ.get("NODE", "milky-a"))
 
 DASH_URL = os.environ.get(
     "DASH_URL",
@@ -227,10 +247,7 @@ def now_ts():
 # ---------------------------------------------------------------- 主循环
 
 def main():
-    if NODE not in ALLOWED_NODES:
-        raise SystemExit(
-            "NODE=%r 不在白名单 %s 内。看板会丢弃未知 node 的帧（静默丢数据），"
-            "所以这里直接退出。" % (NODE, sorted(ALLOWED_NODES)))
+
 
     threading.Thread(target=_worker, daemon=True).start()
 
@@ -374,4 +391,5 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("\n[bye] dropped=%d posted=%d failed=%d"
               % (_stats["dropped"], _stats["posted"], _stats["failed"]), flush=True)
+
 
