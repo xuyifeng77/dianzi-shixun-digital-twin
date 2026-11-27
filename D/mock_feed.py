@@ -1,12 +1,12 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""假数据源（D 岗 D3）：模拟 duo_bridge.py 往 /ingest POST。
+"""假数据源（D 岗 D3）：模拟 duo_bridge_v1_5.py 往 /ingest POST（节点名用契约 5 的 milky-a / milky-b）。
 
 先回填 5 min 历史（让曲线/时间线一打开就有内容），再每 2 s 一帧实时。
 字段值故意用**字符串**，与 duo_bridge.py 现在的实现一致 —— 顺便验证看板的类型强转。
 
 单独跑（A 的复核意见第 5 条，两个窗口）：
-    python app.py --data ../data --port 8000
+    python app.py --port 8000               # 数据根默认 D/data（已拆平到 D 根）
     python mock_feed.py                     # 默认 POST 到 127.0.0.1:8000
 随看板跑：python app.py --mock              # 等价，落盘 data/mock/
 """
@@ -72,8 +72,8 @@ def history(now, span=300, step=2):
     items = []
     start = now - span
     # 剧本时间点（相对 start）
-    smoke_on, smoke_off = span - 250, span - 228      # nodeA 烟雾越 L2
-    flame_on, flame_off = span - 200, span - 184      # nodeB 火焰越 L1
+    smoke_on, smoke_off = span - 250, span - 228      # milky-a 烟雾越 L2
+    flame_on, flame_off = span - 200, span - 184      # milky-b 火焰越 L1
     deny_at = span - 160
     door_open, door_close = span - 150, span - 136
     reboot_at = span - 42
@@ -81,42 +81,42 @@ def history(now, span=300, step=2):
     t = start
     i = 0
     while t <= now:
-        for node in ("nodeA", "nodeB"):
-            nb = (node == "nodeB")
+        for node in ("milky-a", "milky-b"):
+            nb = (node == "milky-b")
             base_t = 24.2 + 0.6 * math.sin((t - start) / 90.0) + (2.6 if nb else 0)
             base_h = 45.0 + 1.5 * math.sin((t - start) / 70.0)
             smoke = 12 + 4 * math.sin((t - start) / 25.0) + (16 if nb else 0)
             flame = 4 + 2 * math.sin((t - start) / 17.0) + (9 if nb else 0)
-            if node == "nodeA" and smoke_on <= t <= smoke_off:
+            if node == "milky-a" and smoke_on <= t <= smoke_off:
                 smoke = 180 + 40 * math.sin((t - start) / 3.0)
-            if node == "nodeB" and flame_on <= t <= flame_off:
+            if node == "milky-b" and flame_on <= t <= flame_off:
                 flame = 145 + 30 * math.sin((t - start) / 3.0)
             light = 78 + 8 * math.sin((t - start) / 30.0)
             sound = 6 + 3 * abs(math.sin((t - start) / 11.0))
-            rst = 1 if (node == "nodeA" and reboot_at <= t < reboot_at + 2) else 0
+            rst = 1 if (node == "milky-a" and reboot_at <= t < reboot_at + 2) else 0
             items.append((t, env(node, t, base_t, base_h, smoke, flame, light, sound, rst)))
             # 链路三路（mock 合成：β 口径 —— 只传结论，带宽低、延迟稳）
             # 用绝对时间做相位，回填段和实时段才能接上，不出现“接缝跳变”
-            lat = 32 + 6 * math.sin(t / 13.0) + (2.5 if node == "nodeB" else 0)
-            bw = 190 + 25 * math.sin(t / 21.0) + (28 if node == "nodeB" else 0)
-            cpu = 22 + 5 * math.sin(t / 19.0) + (5 if node == "nodeB" else 0)
+            lat = 32 + 6 * math.sin(t / 13.0) + (2.5 if node == "milky-b" else 0)
+            bw = 190 + 25 * math.sin(t / 21.0) + (28 if node == "milky-b" else 0)
+            cpu = 22 + 5 * math.sin(t / 19.0) + (5 if node == "milky-b" else 0)
             items.append((t, link(node, t, round(lat, 1), round(bw, 1), round(cpu, 1))))
         t += step
         i += 1
 
     items += [
-        (start + smoke_on, alarm("nodeA", start + smoke_on, 2, "SMOKE")),
-        (start + smoke_off, alarm("nodeA", start + smoke_off, 0, "NONE")),
-        (start + flame_on, alarm("nodeB", start + flame_on, 1, "FLAME")),
-        (start + flame_off, alarm("nodeB", start + flame_off, 0, "NONE")),
-        (start + deny_at, card("nodeA", start + deny_at, "DEADBEEF", False)),
-        (start + deny_at + 8, card("nodeA", start + deny_at + 8, "A1B2C3D4", True)),
-        (start + door_open, door("nodeA", start + door_open, 1)),
-        (start + door_close, door("nodeA", start + door_close, 0)),
+        (start + smoke_on, alarm("milky-a", start + smoke_on, 2, "SMOKE")),
+        (start + smoke_off, alarm("milky-a", start + smoke_off, 0, "NONE")),
+        (start + flame_on, alarm("milky-b", start + flame_on, 1, "FLAME")),
+        (start + flame_off, alarm("milky-b", start + flame_off, 0, "NONE")),
+        (start + deny_at, card("milky-a", start + deny_at, "DEADBEEF", False)),
+        (start + deny_at + 8, card("milky-a", start + deny_at + 8, "A1B2C3D4", True)),
+        (start + door_open, door("milky-a", start + door_open, 1)),
+        (start + door_close, door("milky-a", start + door_close, 0)),
     ]
     for k, off in enumerate((110, 95, 80, 65, 50, 35)):
-        items.append((start + (span - off), count("nodeB", start + (span - off), k + 1)))
-    items.append((start + reboot_at, count("nodeA", start + reboot_at, 0)))
+        items.append((start + (span - off), count("milky-b", start + (span - off), k + 1)))
+    items.append((start + reboot_at, count("milky-a", start + reboot_at, 0)))
     items.sort(key=lambda x: x[0])
     return items
 
@@ -138,10 +138,10 @@ def run(port=8000, span=300, host="127.0.0.1"):
     while True:
         now = time.time()
         el = now - t0
-        for node in ("nodeA", "nodeB"):
-            nb = (node == "nodeB")
+        for node in ("milky-a", "milky-b"):
+            nb = (node == "milky-b")
             smoke = 12 + 5 * math.sin(el / 9.0) + (16 if nb else 0) \
-                + (60 if (node == "nodeA" and 40 < el % 120 < 48) else 0)
+                + (60 if (node == "milky-a" and 40 < el % 120 < 48) else 0)
             flame = 4 + 2 * math.sin(el / 7.0) + (9 if nb else 0)
             t = 24.4 + 0.5 * math.sin(el / 40.0) + (2.6 if nb else 0)
             h = 45.2 + 1.2 * math.sin(el / 33.0)
@@ -153,17 +153,17 @@ def run(port=8000, span=300, host="127.0.0.1"):
                             round(22 + 5 * math.sin(now / 19.0) + (5 if nb else 0), 1)))
         # 每 48 s 一次报警 -> 16 s 后解除（演示时间线持续有内容）
         if 40 < el % 120 < 46:
-            P(alarm("nodeA", now, 2, "SMOKE"))
+            P(alarm("milky-a", now, 2, "SMOKE"))
         elif 60 < el % 120 < 62:
-            P(alarm("nodeA", now, 0, "NONE"))
-        # 人次每 20 s +1（nodeB），门磁每 45 s 翻一次（nodeA）
+            P(alarm("milky-a", now, 0, "NONE"))
+        # 人次每 20 s +1（milky-b），门磁每 45 s 翻一次（milky-a）
         n += 1
         if n % 10 == 0:
             cnt_b += 1
-            P(count("nodeB", now, cnt_b))
+            P(count("milky-b", now, cnt_b))
         if n % 23 == 0:
             door_a = 1 - door_a
-            P(door("nodeA", now, door_a))
+            P(door("milky-a", now, door_a))
         time.sleep(2)
 
 

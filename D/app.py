@@ -8,7 +8,7 @@
 监听必须 0.0.0.0:8000 —— 板子从网段推过来，写 127.0.0.1 本地 curl 通、板子收不到。
 
 用法（两个窗口，A 的复核意见第 5 条）：
-    窗口1  python app.py --data ../data --port 8000
+    窗口1  python app.py --port 8000        # 数据根默认 D/data（app.py 就在 D 根，无 dashboard/ 子目录）
     窗口2  python mock_feed.py              # 独立造数，POST 到 127.0.0.1:8000
     或一步  python app.py --mock            # 内置假数据，落盘到 data/mock/（不污染 raw/）
 
@@ -47,7 +47,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = HERE                                      # D/（app.py 就在 D 根；旧 dashboard/ 子目录已废）
 DEFAULT_DATA = os.path.join(ROOT, "data")
 
-# ---- 契约 3 v1.1c §1.1：节奏与超时（唯一权威，别改成分数）----
+# ---- 契约 3 v1.1f §1.1：节奏与超时（唯一权威，别改成分数）----
 HB_INTERVAL = 2.0        # @E 2 s / 帧
 WARN_S = 6.0             # 6 s 无新 @E = 链路异常（3 帧）
 OFFLINE_S = 30.0         # 30 s = 离线
@@ -62,27 +62,28 @@ LEVELS = {
 }
 DENY_LEVEL = ("deny", "拒绝", "80x2/400")
 
-# 契约 5 v1.0a：node_id 的唯一取值 = milky-a / milky-b / milky-c / milky-d，
-# IP 同表（A 11-26 定稿：.9 / .10 / .11 / .12；PC 计划 .20，D 实测后钉死）。
+# ---- 节点命名（契约 5，A 11-24 网络决策）----
+# hostname 是 milky-a … milky-d（m-i-l-k-y）；milkv 是 ssh 密码，板子型号叫 Milk-V。
 NODE_IPS = {
     "milky-a": "192.168.5.9",
     "milky-b": "192.168.5.10",
-    "milky-c": "192.168.5.11",
-    "milky-d": "192.168.5.12",
-}
-# 旧写法别名：D3 的 mock_feed.py 与 v1.5 早期样本用 nodeA..nodeD，
-# 其 IP 曾是 .7/.8/.9/.10（已作废）。收帧时统一归一成契约 5 的 node_id，
-# 这样事件表 / 环境 JSONL / 页面不会再出现两套节点名。
-NODE_ALIAS = {
-    "nodea": "milky-a", "nodeb": "milky-b",
-    "nodec": "milky-c", "noded": "milky-d",
+    "milky-c": "192.168.5.11",   # 扩展位
+    "milky-d": "192.168.5.12",   # 扩展位
 }
 IP_NODES = {v: k for k, v in NODE_IPS.items()}
 
+# 旧名只作“输入别名”，落盘/展示一律用 milky-*（契约 3 §6 注）
+NODE_ALIAS = {
+    "nodea": "milky-a", "nodeb": "milky-b", "nodec": "milky-c", "noded": "milky-d",
+    "node_a": "milky-a", "node_b": "milky-b", "node_c": "milky-c", "node_d": "milky-d",
+}
 
-def norm_node(name):
-    """把上报的 node 归一到契约 5 的 node_id；未知名字原样返回（不静默丢弃）。"""
-    s = str(name or "").strip()
+
+def norm_node(raw):
+    """把输入里的节点名归一成 milky-*；不认识的原样返回（不静默丢）。"""
+    s = str(raw or "").strip()
+    if not s:
+        return ""
     return NODE_ALIAS.get(s.lower(), s)
 
 SRC_TEXT = {
@@ -203,12 +204,20 @@ class Store:
         return n
 
     def node_from(self, body, remote_ip):
-        name = norm_node(body.get("node"))
-        if name in NODE_IPS or (name and name.startswith("node")):
+        raw = str(body.get("node") or "").strip()
+        name = norm_node(raw)
+        if raw and name != raw:
+            # 契约 5 §三：出现 nodeA…nodeD 是口径错误，但旧脚本不能断——归一 + 明确告警
+            print("[warn] alias %s -> %s（落盘用 milky-*，桥接侧 NODE 应改 %s）"
+                  % (raw, name, name), file=sys.stderr)
+        if name in NODE_IPS:
             return self.node(name, remote_ip)
         if remote_ip in IP_NODES:
             return self.node(IP_NODES[remote_ip], remote_ip)
-        return self.node(name or "nodeX", remote_ip)
+        if name:
+            print("[warn] unknown node %r（不静默丢，按原名落盘）" % name, file=sys.stderr)
+            return self.node(name, remote_ip)
+        return self.node("unknown", remote_ip)
 
     # ---------- 落盘 ----------
     # 目录口径（A 11-26 复核第 5、7 条）：

@@ -123,6 +123,29 @@ env JSONL：  {"ts_rx":1795699262.128,"node":"milky-a","raw":{"type":"env","node
 
 > env 的外层 `node` 已归一（`milky-a`），`raw` 里保留**原样帧**（`"node":"nodeA"`）——原始证据只增不改，分析用外层字段即可。
 
+## 七之三、2026-11-27 合并：代码以远端 v1.1f 前沿版为准
+
+远端网页上传把看板放成了 `D/databoard/`（子目录版），本地是拆平到 D 根的版本。11-27 合并时逐文件比对，**远端 databoard 里的代码才是 v1.1f 前沿版**，本地那份落后：
+
+| 文件 | 远端 v1.1f（采用） | 本地旧版（丢弃） |
+|---|---|---|
+| `app.py` | `norm_node()` 带 `[warn] alias` 告警、`node_from()` 未知节点告警不静默丢、`NODE_ALIAS` 含 `node_a…node_d`、注释 v1.1f | 无告警、别名表少一半、注释 v1.1c |
+| `mock_feed.py` | 造数用 `milky-a`/`milky-b` | 用旧名 `nodeA`/`nodeB` |
+| `templates/index.html` | 底注"契约 3 v1.1f §1.1" | v1.1c |
+| `static/dash.js` | `NODE_COLORS` 用 `nodeX` 兜底（与服务端 fallback 一致） | 用 `unknown`，与服务端不一致 |
+
+采用方式：5 个文件从 `origin/main:D/databoard/*` 取前沿版落位到 D 根，**只把 `ROOT = os.path.dirname(HERE)` 改回 `ROOT = HERE`**（拆平后 `dirname(HERE)` 会算成项目根，`--mock` 污染 `raw/`）；`templates`/`static` 本来就用 `HERE` 定位，无需改。`D/databoard/` 已删，只保留 D 根这一份。
+
+实测（`python app.py --port 8013 --data <临时目录>`，POST `{"node":"nodeA","type":"env",...}`）：
+
+```text
+resp:  {"ok":true,"type":"env","node":"milky-a"}
+stderr:[warn] alias nodeA -> milky-a（落盘用 milky-*，桥接侧 NODE 应改 milky-a）
+落盘:  raw/env/milky-a_20261127.jsonl   raw/events/20261127.csv
+```
+
+再跑 `--mock`：`/api/state` → `online 2/2`、`milky-a .9` / `milky-b .10`、落盘只在 `D/data/mock/raw/`，`D/data/raw/` 仅 `.gitkeep`（未污染）。4 张截图同时换成 v1.1f 重拍版（节点表 milky-a .9 / milky-b .10）。
+
 ## 八、v1.5 收帧形状（`duo_bridge_v1_5.py`，实测通过）
 
 | `type` | 字段 | 看板怎么用 |

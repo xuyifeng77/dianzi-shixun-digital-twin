@@ -6,12 +6,7 @@
   var state = null;
   var tab = 'nodes';
   var sub = 'env';
-  // 契约 5 v1.0a：节点名 = milky-a…milky-d（nodeA/nodeB 是旧写法，服务端已归一）
-  var NODE_COLORS = {
-    'milky-a': '#4c9aff', 'milky-b': '#b07cff',
-    'milky-c': '#4ecb8f', 'milky-d': '#e0a94a',
-    nodeX: '#8fa3bf'
-  };
+  var NODE_COLORS = { 'milky-a': '#4c9aff', 'milky-b': '#b07cff', 'milky-c': '#4ec9a5', 'milky-d': '#e0b64c', unknown: '#8fa3bf' };
 
   function $(id) { return document.getElementById(id); }
   function txt(v, d) { return (v === null || v === undefined || v === '') ? (d || '—') : v; }
